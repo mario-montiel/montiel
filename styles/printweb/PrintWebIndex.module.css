@@ -1,0 +1,25 @@
+/* .container {
+    margin-right: auto;
+    margin-left: auto;
+    margin: 0rem auto 5rem auto
+} */
+
+.container_content {
+    /* width: 90%; */
+    margin-right: auto;
+    margin-left: auto;
+    margin: 0rem auto 5rem auto
+}
+
+/* =====================
+    * RESPONSIVE *
+========================= */
+
+@media screen and (max-width: 750px) {
+    .container_content {
+        /* width: 80%; */
+        margin-right: auto;
+        margin-left: auto;
+        margin: 0rem auto 5rem auto
+    }
+}
