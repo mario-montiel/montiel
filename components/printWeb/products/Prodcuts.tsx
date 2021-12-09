@@ -5,6 +5,7 @@ import styles from './Products.module.css'
 // Components
 import Image from 'next/image'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const Products = () => {
 
@@ -75,7 +76,7 @@ const Products = () => {
                 {showMoreProducts ? 'Ver menos' : 'Ver más'}
             </button>
 
-            <p className={styles.info}>Visita nuestro <a href="/projects/print-web">Catálogo</a> para descubrir todos nuestros productos.</p>
+            <p className={styles.info}>Visita nuestro <Link href="/projects/print-web">Catálogo</Link> para descubrir todos nuestros productos.</p>
         </div>
     )
 }

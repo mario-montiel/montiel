@@ -9,21 +9,6 @@ const WhatMakesAreUnique = () => {
     const [btnCircles, setBtnCircles] = useState<any>([])
 
     // Functions
-    const circles = () => {
-        let html: any = []
-        const procedures = document.querySelectorAll(`.${styles.procedure_container}`) as NodeListOf<HTMLElement>
-
-        setBtnCircles([]);
-
-        for (let index = 0; index < procedures.length; index++) {
-            setBtnCircles((oldValue: any) => [...oldValue,
-            <div onClick={() => selectCircle(index)} className={styles.btn_circles} key={index}></div>
-            ])
-        }
-
-        return html.lenth ? html : (<div>Cargando</div>)
-    }
-
     const changeBtnCircleColor = (index: number) => {
         const circles = document.querySelectorAll(`.${styles.btn_circles}`) as NodeListOf<HTMLElement>
 
@@ -34,41 +19,55 @@ const WhatMakesAreUnique = () => {
         circles[index].style.backgroundColor = '#535353'
     }
 
-    const selectCircle = async (index: any) => {
-        const procedures = document.querySelectorAll(`.${styles.procedure_container}`) as NodeListOf<HTMLElement>
-        const procedures_grid_container = document.querySelector(`.${styles.procedure_grid}`) as HTMLElement
-        if (procedures.length) {
-            changeBtnCircleColor(index)
-            procedures.forEach((procedure, i) => {
-                if (procedures[index] == procedure) {
-                    switch (i) {
-                        case 0:
-                            procedures_grid_container.style.transform = 'translateX(0%)'
-                            break;
-                        case 1:
-                            procedures_grid_container.style.transform = 'translateX(-16.6%)'
-                            break;
-                        case 2:
-                            procedures_grid_container.style.transform = 'translateX(-33.2%)'
-                            break;
-                        case 3:
-                            procedures_grid_container.style.transform = 'translateX(-49.9%)'
-                            break;
-                        case 4:
-                            procedures_grid_container.style.transform = 'translateX(-66.5%)'
-                            break;
-                        case 5:
-                            procedures_grid_container.style.transform = 'translateX(-83.1%)'
-                            break;
-
-                    }
-                }
-            });
-        }
-    }
+    
 
     // Use Effect
     useEffect(() => {
+        const circles = () => {
+            let html: any = []
+            const procedures = document.querySelectorAll(`.${styles.procedure_container}`) as NodeListOf<HTMLElement>
+    
+            for (let index = 0; index < procedures.length; index++) {
+                html.push(<div onClick={() => selectCircle(index)} className={styles.btn_circles} key={index}></div>)
+                // setBtnCircles((oldValue: any) => [...oldValue,
+                // <div onClick={() => selectCircle(index)} className={styles.btn_circles} key={index}></div>
+                // ])
+            }
+    
+            return html
+        }
+        const selectCircle = async (index: any) => {
+            const procedures = document.querySelectorAll(`.${styles.procedure_container}`) as NodeListOf<HTMLElement>
+            const procedures_grid_container = document.querySelector(`.${styles.procedure_grid}`) as HTMLElement
+            if (procedures.length) {
+                changeBtnCircleColor(index)
+                procedures.forEach((procedure, i) => {
+                    if (procedures[index] == procedure) {
+                        switch (i) {
+                            case 0:
+                                procedures_grid_container.style.transform = 'translateX(0%)'
+                                break;
+                            case 1:
+                                procedures_grid_container.style.transform = 'translateX(-16.6%)'
+                                break;
+                            case 2:
+                                procedures_grid_container.style.transform = 'translateX(-33.2%)'
+                                break;
+                            case 3:
+                                procedures_grid_container.style.transform = 'translateX(-49.9%)'
+                                break;
+                            case 4:
+                                procedures_grid_container.style.transform = 'translateX(-66.5%)'
+                                break;
+                            case 5:
+                                procedures_grid_container.style.transform = 'translateX(-83.1%)'
+                                break;
+    
+                        }
+                    }
+                });
+            }
+        }
         circles()
     }, [])
 

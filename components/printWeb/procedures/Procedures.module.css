@@ -100,4 +100,7 @@
         background-color: gray;
     }
 
+    .btn_circles:nth-child(1) {
+        background-color: #535353;
+    }
 }
